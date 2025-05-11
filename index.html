@@ -90,22 +90,43 @@
             border-radius: 5px;
             border: 1px solid #ccc;
 
-     .section-header {
+      .section-header {
       background-color: #8b4513;
       color: white;
-      padding: 10px;
+      padding: 10px 15px;
       cursor: pointer;
       font-weight: bold;
       border-radius: 5px;
       margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 18px;
     }
 
-    #listening-section {
-      display: none; /* مخفي مبدئيًا */
-      padding: 10px;
-      background-color: #f0f0f0;
+    .section-header .arrow {
+      transition: transform 0.3s ease;
+      font-size: 18px;
+    }
+
+    .section-header.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      background-color: #f9f9f9;
+      padding: 0 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .section-content.open {
+      max-height: 500px;
+      padding: 10px 15px;
   }
 </style>
 
@@ -134,8 +155,10 @@
     <div id="exam-content">
 
         <!-- قسم القراءة -->
-          <div class="section-header" onclick="toggleSection()">قسم القراءة</div>
-<div id="listening-section">
+          <div class="section-header">
+  قسم القراءة <span class="arrow">&#9660;</span>
+</div>
+
             <!-- 10 فقرات قراءة مع 4 أسئلة اختيارية لكل فقرة -->
             <div class="question" id="q1">
                 <p><strong>الفقرة 1:</strong> [أدخل النص هنا]</p>
@@ -470,8 +493,10 @@
         
         </div>
         <!-- قسم القواعد -->
-        <div class="section-header">قسم القواعد</div>
-        <div id="grammar-section">
+        <div class="section-header">
+  قسم القواعد <span class="arrow">&#9660;</span>
+</div>
+
             <!-- 30 سؤال اختيار من متعدد -->
             <div class="question" id="grammar-q41">
                 <p><strong>سؤال 1:</strong> [أدخل السؤال هنا]</p>
@@ -749,8 +774,10 @@
         </div>
 
         <!-- قسم الاستماع -->
-        <div class="section-header">قسم الاستماع</div>
-        <div id="listening-section">
+        <div class="section-header">
+  قسم الاستماع <span class="arrow">&#9660;</span>
+</div>
+
             <!-- 5 فقرات استماع مع 4 أسئلة اختيارية لكل فقرة -->
             <div class="question" id="listening-q71">
                 <p><strong>فقرة الاستماع 1 🎧:</strong> <a href="audiofile1.mp3" target="_blank">استمع هنا</a></p>
@@ -913,8 +940,10 @@
         </div>
 
         <!-- قسم التحليل الكتابي -->
-        <div class="section-header">قسم التحليل الكتابي</div>
-        <div id="writing-section">
+        <div class="section-header">
+  قسم التحليل الكتابي <span class="arrow">&#9660;</span>
+</div>
+
             <!-- 5 فقرات تحليل مع 2 سؤال اختيار لكل فقرة -->
             <div class="question" id="writing-q91">
                 <p><strong>فقرة 1:</strong> [أدخل الفقرة هنا]</p>
@@ -1104,7 +1133,14 @@ function toggleSection() {
 
 }
         
-    
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      content.classList.toggle('open');
+      header.classList.toggle('active');
+    });
+  });
+
   </script>
 
 </body>
