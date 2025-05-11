@@ -136,7 +136,6 @@
         <!-- قسم القراءة -->
           <div class="section-header" onclick="toggleSection()">قسم القراءة</div>
 <div id="listening-section">
-
             <!-- 10 فقرات قراءة مع 4 أسئلة اختيارية لكل فقرة -->
             <div class="question" id="q1">
                 <p><strong>الفقرة 1:</strong> [أدخل النص هنا]</p>
@@ -1098,7 +1097,7 @@ function correctAnswers() {
 
   resultMessage = `Your score is ${score} / ${total}`;
   document.getElementById('submit-quiz').textContent = resultMessage;
-
+}
 function toggleSection() {
     var section = document.getElementById("listening-section");
     section.style.display = section.style.display === "none" ? "block" : "none";
