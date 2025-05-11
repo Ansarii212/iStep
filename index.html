@@ -157,9 +157,9 @@
     <div id="exam-content">
 
         <!-- قسم القراءة -->
-        <div class="section-header">قسم التحليل الكتابي</div>
-        <div id="writing-section">
-  <div class="section-toggle" onclick="toggleSection(this)"> Listening</div>
+          <div class="section">
+    <div class="section-toggle" onclick="toggleSection(this)">قسم Grammar</div>
+    <div class="section-content">
 
             <!-- 10 فقرات قراءة مع 4 أسئلة اختيارية لكل فقرة -->
             <div class="question" id="q1">
@@ -1071,7 +1071,7 @@
 <p id="quiz-result"></p>
         
     </div>
-
+    </div>
     <script>
 function correctAnswers() {
   const correctAnswers = [
@@ -1124,23 +1124,22 @@ function correctAnswers() {
   document.getElementById('submit-quiz').textContent = resultMessage;
 }
         
-  function toggleSection(element) {
-    const allToggles = document.querySelectorAll('.section-toggle');
-    const allContents = document.querySelectorAll('.section-content');
+  
+    function toggleSection(clicked) {
+      const toggles = document.querySelectorAll('.section-toggle');
+      const contents = document.querySelectorAll('.section-content');
 
-    allToggles.forEach((el, i) => {
-      if (el === element) {
-        el.classList.toggle('open');
-        allContents[i].style.display = allContents[i].style.display === 'block' ? 'none' : 'block';
-      } else {
-        el.classList.remove('open');
-        allContents[i].style.display = 'none';
-      }
-    });
-  }
-
-</script>
-    
+      toggles.forEach((toggle, index) => {
+        if (toggle === clicked) {
+          toggle.classList.toggle('open');
+          contents[index].style.display = contents[index].style.display === 'block' ? 'none' : 'block';
+        } else {
+          toggle.classList.remove('open');
+          contents[index].style.display = 'none';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
