@@ -157,8 +157,9 @@
     <div id="exam-content">
 
         <!-- قسم القراءة -->
-          <div class="section-header">
-  قسم القراءة <span class="arrow">&#9660;</span>
+          <div class="section-header" onclick="toggleSection()">
+  قسم القراءة
+  <span id="arrow" class="arrow">&#9660;</span> <!-- سهم نزول -->
 </div>
 
             <!-- 10 فقرات قراءة مع 4 أسئلة اختيارية لكل فقرة -->
@@ -496,8 +497,9 @@
         
         </div>
         <!-- قسم القواعد -->
-        <div class="section-header">
-  قسم القواعد <span class="arrow">&#9660;</span>
+        <div class="section-header" onclick="toggleSection()">
+  قسم القراءة
+  <span id="arrow" class="arrow">&#9660;</span> <!-- سهم نزول -->
 </div>
 
             <!-- 30 سؤال اختيار من متعدد -->
@@ -1134,22 +1136,15 @@ function correctAnswers() {
   resultMessage = `Your score is ${score} / ${total}`;
   document.getElementById('submit-quiz').textContent = resultMessage;
 }
-function toggleSection() {
-    var section = document.getElementById("listening-section");
-    section.style.display = section.style.display === "none" ? "block" : "none";
-
-}
         
-  document.querySelectorAll('.section-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-
-      // فتح/إغلاق العنصر
-      content.classList.toggle('open');
-      header.classList.toggle('active');
-    });
-  });
-
+function toggleSection() {
+    const section = document.getElementById("listening-section");
+    const arrow = document.getElementById("arrow");
+    
+    section.classList.toggle("open");
+    arrow.classList.toggle("up");
+  
+}
 
   </script>
 
