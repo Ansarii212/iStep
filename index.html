@@ -1134,12 +1134,15 @@ function correctAnswers() {
   resultMessage = `Your score is ${score} / ${total}`;
   document.getElementById('submit-quiz').textContent = resultMessage;
 }
-        function toggleSection() {
-    var section = document.getElementById("listening-section");
-    section.style.display = section.style.display === "none" ? "block" : "none";
-  }
+       document.querySelectorAll('.section-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    content.classList.toggle('open');
+    header.classList.toggle('active');
+  });
+}); 
 
-
+        }
   </script>
 
 </body>
