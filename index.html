@@ -1136,10 +1136,13 @@ function toggleSection() {
   document.querySelectorAll('.section-header').forEach(header => {
     header.addEventListener('click', () => {
       const content = header.nextElementSibling;
+
+      // فتح/إغلاق العنصر
       content.classList.toggle('open');
       header.classList.toggle('active');
     });
   });
+
 
   </script>
 
