@@ -157,13 +157,11 @@
     <div id="exam-content">
 
         <!-- قسم القراءة -->
-          <div class="section-header" onclick="toggleSection()">
-  قسم القراءة
-  <span id="arrow" class="arrow">&#9660;</span> <!-- سهم نزول -->
-</div>
+      <div class="section-header" onclick="toggleSection()">قسم القراءة</div>
+<div id="listening-section">
 
             <!-- 10 فقرات قراءة مع 4 أسئلة اختيارية لكل فقرة -->
-   <div class="section-content">
+   
   
                 <p><strong>الفقرة 1:</strong> [أدخل النص هنا]</p>
                 <p><strong>سؤال 1:</strong> [أدخل السؤال هنا]</p>
@@ -1136,15 +1134,11 @@ function correctAnswers() {
   resultMessage = `Your score is ${score} / ${total}`;
   document.getElementById('submit-quiz').textContent = resultMessage;
 }
-        
-function toggleSection() {
-    const section = document.getElementById("listening-section");
-    const arrow = document.getElementById("arrow");
-    
-    section.classList.toggle("open");
-    arrow.classList.toggle("up");
-  
-}
+        function toggleSection() {
+    var section = document.getElementById("listening-section");
+    section.style.display = section.style.display === "none" ? "block" : "none";
+  }
+
 
   </script>
 
